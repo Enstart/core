@@ -46,6 +46,13 @@ class ServiceProvider implements ServiceProviderInterface
                 $config->get('views.extension', 'php')
             );
             $view->loadExtension($c->make('Enstart\View\ViewExtension'));
+
+            $extensions = $c->config->get('views.extensions', []);
+
+            if (is_array($extensions) && $extensions) {
+                $view->loadExtensions($extensions);
+            }
+
             return $view;
         });
         $c->alias('Enstart\View\ViewInterface', 'views');
