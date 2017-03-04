@@ -23,6 +23,13 @@ class App
     protected $providers;
 
     /**
+     * Registered app paths
+     *
+     * @var array
+     */
+    protected $paths = [];
+
+    /**
      * @param ContainerInterface|null $container
      */
     public function __construct(ContainerInterface $container = null)
@@ -48,9 +55,42 @@ class App
     }
 
     /**
+     * Add one or more paths
+     *
+     * @param string|array $name
+     * @param string       $value
+     */
+    public function addPath($name, $value = null)
+    {
+        if (is_array($name)) {
+            $this->paths = array_merge($this->paths, $name);
+            return $this;
+        }
+
+        $this->paths[$name] = $value;
+        return $this;
+    }
+
+    /**
+     * Get a path
+     *
+     * @param  string $name
+     * @param  mixed  $fallback
+     *
+     * @return $this
+     */
+    public function path($name, $fallback = null)
+    {
+        return array_key_exists($name, $this->paths)
+            ? $this->paths[$name]
+            : $fallback;
+    }
+
+    /**
      * Register a service provider
      *
      * @param  string $provider Full qualified class name
+     *
      * @return $this
      */
     public function serviceProvider($provider)
