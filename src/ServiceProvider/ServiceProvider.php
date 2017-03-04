@@ -50,7 +50,7 @@ class ServiceProvider implements ServiceProviderInterface
             $extensions = $c->config->get('views.extensions', []);
 
             if (is_array($extensions) && $extensions) {
-                $view->loadExtensions($extensions);
+                $view->loadExtensions($c->make($extensions));
             }
 
             return $view;
