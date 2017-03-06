@@ -20,4 +20,10 @@ class Controller
 
         return static::$container->make($property);
     }
+
+    public function __call($method, array $args)
+    {
+        $app = static::$container->make('Enstart\App');
+        return call_user_func_array([$app, $method], $args);
+    }
 }

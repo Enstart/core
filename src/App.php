@@ -177,6 +177,42 @@ class App
     }
 
     /**
+     * Create a new JsonResponseEntity instance
+     *
+     * @param boolean $success
+     * @param mixed   $data
+     * @param integer $code
+     * @param array   $errors
+     * @param string  $message
+     *
+     * @return Enstart\Entity\JsonResponseEntity
+     */
+    public function makeJsonEntity($success = true, $data = null, $code = 200, array $errors = [], $message = null)
+    {
+        return new Entity\JsonResponseEntity($success, $data, $code, $errors, $message);
+    }
+
+    /**
+     * Redirect to a named route
+     *
+     * @param  string  $name
+     * @param  integer $code
+     *
+     * @return Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function routeRedirect($name, array $args = [], $code = 307, array $headers = [])
+    {
+        $response = $this->container->make('Enstart\Http\ResponseInterface');
+        $router   = $this->container->make('Enstart\Router\RouterInterface');
+
+        return $response->redirect(
+            $router->getRoute($name, $args),
+            $code,
+            $headers
+        );
+    }
+
+    /**
      * Start the app and dispatch the router
      *
      * @param  string $method
