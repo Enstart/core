@@ -19,7 +19,7 @@
         "maer/csrf": "^1.0",
         "symfony/http-foundation": "^3.2",
         "monolog/monolog": "^1.22",
-        "filp/whoops": "2.1.5"
+        "filp/whoops": "^2.1"
     },
     "autoload": {
         "psr-4": {
