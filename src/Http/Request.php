@@ -29,7 +29,7 @@ class Request implements RequestInterface
     public function get($key = null, $fallback = null)
     {
         return $key
-            ? $this->request->query->query($key, $fallback)
+            ? $this->request->query->get($key, $fallback)
             : $this->request->query;
     }
 
@@ -44,7 +44,7 @@ class Request implements RequestInterface
     public function post($key = null, $fallback = null)
     {
         return $key
-            ? $this->request->request->request($key, $fallback)
+            ? $this->request->request->get($key, $fallback)
             : $this->request->request;
     }
 
@@ -59,7 +59,7 @@ class Request implements RequestInterface
     public function cookies($key = null, $fallback = null)
     {
         return $key
-            ? $this->request->cookies->cookies($key, $fallback)
+            ? $this->request->cookies->get($key, $fallback)
             : $this->request->cookies;
     }
 
@@ -74,7 +74,7 @@ class Request implements RequestInterface
     public function files($key = null, $fallback = null)
     {
         return $key
-            ? $this->request->files->files($key, $fallback)
+            ? $this->request->files->get($key, $fallback)
             : $this->request->files;
     }
 
@@ -89,7 +89,7 @@ class Request implements RequestInterface
     public function server($key = null, $fallback = null)
     {
         return $key
-            ? $this->request->server->server($key, $fallback)
+            ? $this->request->server->get($key, $fallback)
             : $this->request->server;
     }
 
@@ -104,7 +104,7 @@ class Request implements RequestInterface
     public function headers($key = null, $fallback = null)
     {
         return $key
-            ? $this->request->headers->header($key, $fallback)
+            ? $this->request->headers->get($key, $fallback)
             : $this->request->headers;
     }
 
