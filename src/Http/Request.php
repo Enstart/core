@@ -29,7 +29,7 @@ class Request implements RequestInterface
     public function get($key = null, $fallback = null)
     {
         return $key
-            ? $this->request->query->get($key, $fallback)
+            ? $this->request->query->query($key, $fallback)
             : $this->request->query;
     }
 
@@ -44,7 +44,7 @@ class Request implements RequestInterface
     public function post($key = null, $fallback = null)
     {
         return $key
-            ? $this->request->request->post($key, $fallback)
+            ? $this->request->request->request($key, $fallback)
             : $this->request->request;
     }
 
