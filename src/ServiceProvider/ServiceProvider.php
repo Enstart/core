@@ -30,7 +30,7 @@ class ServiceProvider implements ServiceProviderInterface
 
         // Http
         $c->singleton('Enstart\Http\RequestInterface', 'Enstart\Http\Request');
-        $c->alias('Enstart\Http\RequestInterfac', 'request');
+        $c->alias('Enstart\Http\RequestInterface', 'request');
 
         $c->singleton('Enstart\Http\ResponseInterface', 'Enstart\Http\Response');
         $c->alias('Enstart\Http\ResponseInterface', 'response');
