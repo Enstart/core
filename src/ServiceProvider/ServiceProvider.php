@@ -29,7 +29,11 @@ class ServiceProvider implements ServiceProviderInterface
         $c->alias('Enstart\Router\RouterInterface', 'router');
 
         // Http
-        $c->singleton('Enstart\Http\RequestInterface', 'Enstart\Http\Request');
+        $c->singleton('Enstart\Http\RequestInterface', function () {
+            return new \Enstart\Http\Request(
+                \Symfony\Component\HttpFoundation\Request::createFromGlobals()
+            );
+        });
         $c->alias('Enstart\Http\RequestInterface', 'request');
 
         $c->singleton('Enstart\Http\ResponseInterface', 'Enstart\Http\Response');
