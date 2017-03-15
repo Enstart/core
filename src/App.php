@@ -196,11 +196,13 @@ class App
      * Redirect to a named route
      *
      * @param  string  $name
+     * @param  string  $args  Route arguments
      * @param  integer $code
+     * @param  array   $headers
      *
      * @return Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function routeRedirect($name, array $args = [], $code = 307, array $headers = [])
+    public function routeRedirect($name, array $args = [], $code = 302, array $headers = [])
     {
         $response = $this->container->make('Enstart\Http\ResponseInterface');
         $router   = $this->container->make('Enstart\Router\RouterInterface');
