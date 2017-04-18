@@ -34,9 +34,7 @@ class App
      */
     public function __construct(ContainerInterface $container = null)
     {
-        if (is_null($container)) {
-            $this->container = new Container;
-        }
+        $this->container = $contaner ?: new Container;
 
         // Register the container to itself
         $this->container->singleton('Enstart\Container\ContainerInterface', function ($c) {
@@ -95,13 +93,19 @@ class App
      */
     public function serviceProvider($provider)
     {
+        $name  = trim($provider, '\\');
+        if (!empty($this->providers[$name])) {
+            // This provider has already been registered
+            return $this;
+        }
+
         $class = $this->container->make($provider);
         if (!$class instanceof ServiceProviderInterface) {
             throw new \Exception("Service providers must implement Enstart\ServiceProvider\ServiceProviderInterface");
         }
 
         $class->register($this->container);
-        $this->providers[trim($provider, '\\')] = $class;
+        $this->providers[$name] = $class;
 
         return $this;
     }
