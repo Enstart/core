@@ -98,7 +98,7 @@ class ViewExtension implements ExtensionInterface
 
         $text = strip_tags($text);
 
-        if(strlen($text) > $maxLength) {
+        if (strlen($text) > $maxLength) {
             $text      = substr($text, 0, $maxLength - strlen($suffix));
             $lastSpace = strrpos($text, ' ');
             $text      = substr($text, 0, $lastSpace);

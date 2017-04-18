@@ -84,7 +84,7 @@ class ServiceProvider implements ServiceProviderInterface
     {
         $config = $c->make('Enstart\Config\ConfigInterface');
 
-        $logLevel = $config->get('logging.level',  \Monolog\Logger::ERROR);
+        $logLevel = $config->get('logging.level', \Monolog\Logger::ERROR);
         $logLevel = \Monolog\Logger::toMonologLevel($logLevel);
         $filename = $config->get('logging.file', 'app.log');
 
@@ -107,7 +107,6 @@ class ServiceProvider implements ServiceProviderInterface
             return $log;
         });
         $c->alias('Psr\Log\LoggerInterface', 'log');
-
     }
 
     /**
@@ -125,7 +124,7 @@ class ServiceProvider implements ServiceProviderInterface
 
         $whoops->register();
 
-        $c->singleton('Whoops\Run', function() use($whoops) {
+        $c->singleton('Whoops\Run', function () use ($whoops) {
             return $whoops;
         });
     }

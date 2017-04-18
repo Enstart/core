@@ -64,7 +64,8 @@ class Response implements ResponseInterface
     {
         $response = new SymfonyResponse();
 
-        $response->headers->set('Content-Disposition',
+        $response->headers->set(
+            'Content-Disposition',
             $response->headers->makeDisposition(
                 ResponseHeaderBag::DISPOSITION_ATTACHMENT,
                 $file
@@ -103,5 +104,4 @@ class Response implements ResponseInterface
     {
         return new RedirectResponse($url, $status, $headers);
     }
-
 }

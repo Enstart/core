@@ -21,6 +21,14 @@
         "monolog/monolog": "^1.22",
         "filp/whoops": "^2.1"
     },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^2.8"
+    },
+    "scripts": {
+        "test": [
+            "./vendor/bin/phpcs --standard=PSR2 --extensions=php --ignore=vendor/ -n -s ./"
+        ]
+    },
     "autoload": {
         "psr-4": {
             "Enstart\\": "src/"
