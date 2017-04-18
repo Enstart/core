@@ -34,7 +34,7 @@ class App
      */
     public function __construct(ContainerInterface $container = null)
     {
-        $this->container = $contaner ?: new Container;
+        $this->container = $container ?: new Container;
 
         // Register the container to itself
         $this->container->singleton('Enstart\Container\ContainerInterface', function ($c) {
@@ -227,6 +227,11 @@ class App
     public function start($method = null, $uri = null)
     {
         $response = $this->getRouter()->dispatch($method, $uri);
+
+        if ($response instanceof \Enstart\Entity\JsonResponseEntity) {
+            echo $response->send();
+            return;
+        }
 
         if (!$response instanceof Response) {
             $response = new Response($response);
