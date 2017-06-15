@@ -43,12 +43,8 @@ class ServiceProvider implements ServiceProviderInterface
         $c->alias('Enstart\Http\SessionInterface', 'session');
 
         // Libraries
-        $c->singleton('Maer\Security\Csrf\Csrf', function ($c) {
-            // Make sure the session is started
-            $session = $c->make('Enstart\Http\SessionInterface');
-            return new \Maer\Security\Csrf\Csrf;
-        });
-        $c->alias('Maer\Security\Csrf\Csrf', 'csrf');
+        $c->singleton('Enstart\Security\CsrfInterface', 'Enstart\Security\Csrf');
+        $c->alias('Enstart\Security\CsrfInterface', 'csrf');
 
         // Templates
         $c->singleton('Enstart\View\ViewInterface', function ($c) {

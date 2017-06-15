@@ -56,14 +56,25 @@ class ViewExtension implements ExtensionInterface
             return $file;
         }
 
-        $public   = rtrim($this->app->path('public'), '/');
-        $filepath = $public . '/' . ltrim($file, '/');
+        $file   = '/' . ltrim($file, '/');
+        $public = rtrim($this->app->path('public'), '/');
+        $full   = $public . $file;
 
-        if (!is_file($filepath)) {
+        if ($this->app->config->get('debug') !== true) {
+            $path     = pathinfo($full, PATHINFO_DIRNAME);
+            $filename = pathinfo($full, PATHINFO_FILENAME);
+            $ext      = pathinfo($full, PATHINFO_EXTENSION);
+            $minfile  = $path . '/' . $filename . '.min.' . $ext;
+            $file     = is_file($minfile) ? substr($minfile, strlen($public)) : $file;
+            $full     = $public . $file;
+        }
+
+        if (!is_file($full)) {
             return $file;
         }
 
-        return $file . '?' . filemtime($filepath);
+        return $file . '?' . filemtime($full);
+
     }
 
     /**
