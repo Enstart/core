@@ -14,6 +14,9 @@ class ServiceProvider implements ServiceProviderInterface
         });
         $c->alias('Enstart\Container\ContainerInterface', 'container');
 
+        // Load helpers
+        require_once __DIR__ . '/../Helpers/functions.php';
+
         // Router
         $c->singleton('Enstart\Router\RouterInterface', function ($c) {
             $router = $c->make('Enstart\Router\Router');

@@ -42,6 +42,8 @@ class ViewExtension implements ExtensionInterface
         $engine->registerFunction('route', [$this, 'route']);
         $engine->registerFunction('excerpt', [$this, 'excerpt']);
         $engine->registerFunction('queryString', [$this, 'queryString']);
+        $engine->registerFunction('csrfToken', [$this, 'csrfToken']);
+        $engine->registerFunction('csrfField', [$this, 'csrfField']);
     }
 
     /**
@@ -145,5 +147,29 @@ class ViewExtension implements ExtensionInterface
         $values = array_replace($values, $add);
 
         return '?' . http_build_query($values);
+    }
+
+
+    /**
+     * Get a csrf token
+     *
+     * @param  string $name
+     * @return string
+     */
+    public function csrfToken($name = null)
+    {
+        return $this->app->csrf->getToken($name);
+    }
+
+
+    /**
+     * Get a hidden input field with a csrf token
+     *
+     * @param  string $name
+     * @return string
+     */
+    public function csrfField($name = null)
+    {
+        return $this->app->csrf->getTokenField($name);
     }
 }
