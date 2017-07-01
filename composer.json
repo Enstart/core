@@ -1,5 +1,5 @@
 {
-    "name": "maer/enstart",
+    "name": "enstart/core",
     "type": "library",
     "description": "Enstart is (yet another) small PHP frameworks with the essentials for getting started quickly",
     "license": "MIT",
