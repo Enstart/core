@@ -76,7 +76,6 @@ class ViewExtension implements ExtensionInterface
         }
 
         return $file . '?' . filemtime($full);
-
     }
 
     /**

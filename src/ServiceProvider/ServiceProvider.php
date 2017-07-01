@@ -49,6 +49,9 @@ class ServiceProvider implements ServiceProviderInterface
         $c->singleton('Enstart\Security\CsrfInterface', 'Enstart\Security\Csrf');
         $c->alias('Enstart\Security\CsrfInterface', 'csrf');
 
+        $c->singleton('Enstart\Validator\ValidatorInterface', 'Enstart\Validator\Validator');
+        $c->alias('Enstart\Validator\Validator', 'validator');
+
         // Templates
         $c->singleton('Enstart\View\ViewInterface', function ($c) {
             $config = $c->make('Enstart\Config\ConfigInterface');

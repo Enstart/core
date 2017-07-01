@@ -1,4 +1,5 @@
 <?php namespace Enstart\Security;
+
 /**
  * A small CSRF library for generating/verifying CSRF tokens
  *

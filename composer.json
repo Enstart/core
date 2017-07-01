@@ -19,7 +19,8 @@
         "maer/csrf": "^1.0",
         "symfony/http-foundation": "^3.2",
         "monolog/monolog": "^1.22",
-        "filp/whoops": "^2.1"
+        "filp/whoops": "^2.1",
+        "maer/validator": "^0.3"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "^2.8"

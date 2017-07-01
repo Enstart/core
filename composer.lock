@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7fef139a70f94c06b4b04ddc3bdf554b",
+    "content-hash": "09639eb390e6aabf097985d8deebe54d",
     "packages": [
         {
             "name": "filp/whoops",
@@ -359,6 +359,47 @@
             ],
             "description": "A small, simple, extendable one-file PHP router with groups, filters and named routes",
             "time": "2017-04-06T13:04:08+00:00"
+        },
+        {
+            "name": "maer/validator",
+            "version": "0.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/magnus-eriksson/validator.git",
+                "reference": "2eeafe4a81844321511ca976d8df6173a4ef463e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/magnus-eriksson/validator/zipball/2eeafe4a81844321511ca976d8df6173a4ef463e",
+                "reference": "2eeafe4a81844321511ca976d8df6173a4ef463e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "php": ">=5.5.9",
+                "phpunit/phpunit": "4.7.*",
+                "squizlabs/php_codesniffer": "^3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Maer\\Validator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Magnus Eriksson",
+                    "email": "mange@reloop.se"
+                }
+            ],
+            "description": "An easy and customizable validation library",
+            "time": "2017-06-30T22:59:19+00:00"
         },
         {
             "name": "monolog/monolog",
