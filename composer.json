@@ -1,7 +1,7 @@
 {
     "name": "enstart/core",
     "type": "library",
-    "description": "Enstart is (yet another) small PHP frameworks with the essentials for getting started quickly",
+    "description": "The core files for the enstart framework",
     "license": "MIT",
     "authors": [
         {
