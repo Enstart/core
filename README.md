@@ -1,5 +1,3 @@
-# Enstart is a small frameworks with the essentials.
+# Enstart core
 
-It's not a micro- or a full fledged enterprise framework. It's somewhere in between.
-
-More info is coming...
+The core files for the [enstart framework](https://github.com/enstart/enstart)
