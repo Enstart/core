@@ -95,7 +95,7 @@ class View implements ViewInterface
      */
     public function addData(array $data, $templates = null)
     {
-        $this->engine->addData($data, $template);
+        $this->engine->addData($data, $templates);
         return $this;
     }
 
