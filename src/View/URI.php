@@ -13,7 +13,7 @@ class URI extends LeagueURI
      */
     public function updateUri($uri)
     {
-        $this->uri = trim($uri, '/');
+        $this->uri   = $uri;
         $this->parts = explode('/', $this->uri);
     }
 }

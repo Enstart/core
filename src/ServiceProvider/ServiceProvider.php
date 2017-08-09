@@ -55,7 +55,7 @@ class ServiceProvider implements ServiceProviderInterface
         // Templates
         $c->singleton('Enstart\View\URI', function ($c) {
             return new \Enstart\View\URI(
-                $c->request->currentPath()
+                $c->request->getPathInfo()
             );
         });
 
