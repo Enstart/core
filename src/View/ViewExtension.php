@@ -3,7 +3,6 @@
 use Enstart\App;
 use League\Plates\Engine;
 use League\Plates\Extension\ExtensionInterface;
-use League\Plates\Extension\URI;
 
 class ViewExtension implements ExtensionInterface
 {
@@ -35,7 +34,7 @@ class ViewExtension implements ExtensionInterface
         $this->engine = $engine;
 
         $this->engine->loadExtension(
-            new URI($this->app->router->getRequestPath())
+            $this->app->container->make('Enstart\View\URI')
         );
 
         $engine->registerFunction('asset', [$this, 'asset']);

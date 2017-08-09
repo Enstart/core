@@ -53,6 +53,12 @@ class ServiceProvider implements ServiceProviderInterface
         $c->alias('Enstart\Validator\Validator', 'validator');
 
         // Templates
+        $c->singleton('Enstart\View\URI', function ($c) {
+            return new \Enstart\View\URI(
+                $c->request->currentPath()
+            );
+        });
+
         $c->singleton('Enstart\View\ViewInterface', function ($c) {
             $config = $c->make('Enstart\Config\ConfigInterface');
             $view = new View(
