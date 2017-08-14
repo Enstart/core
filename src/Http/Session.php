@@ -90,7 +90,7 @@ class Session implements SessionInterface
      */
     public function remove($name)
     {
-        return $this->session->remove();
+        return $this->session->remove($name);
     }
 
 
