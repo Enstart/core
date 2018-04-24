@@ -4,25 +4,19 @@ use Enstart\App;
 use League\Plates\Engine;
 use League\Plates\Extension\ExtensionInterface;
 
-class ViewExtension implements ExtensionInterface
+class ViewExtension extends AbstractExtension
 {
     /**
-     * @var Engine
+     * @var array
      */
-    protected $engine;
-
-    /**
-     * @var RouterInterface
-     */
-    protected $app;
-
-    /**
-     * @param Enstart\App $app
-     */
-    public function __construct(App $app)
-    {
-        $this->app = $app;
-    }
+    protected $functions = [
+        'asset',
+        'route',
+        'excerpt',
+        'queryString',
+        'csrfToken',
+        'csrfField',
+    ];
 
     /**
      * Register the extension
@@ -31,18 +25,11 @@ class ViewExtension implements ExtensionInterface
      */
     public function register(Engine $engine)
     {
-        $this->engine = $engine;
+        parent::register($engine);
 
         $this->engine->loadExtension(
             $this->app->container->make('Enstart\View\URI')
         );
-
-        $engine->registerFunction('asset', [$this, 'asset']);
-        $engine->registerFunction('route', [$this, 'route']);
-        $engine->registerFunction('excerpt', [$this, 'excerpt']);
-        $engine->registerFunction('queryString', [$this, 'queryString']);
-        $engine->registerFunction('csrfToken', [$this, 'csrfToken']);
-        $engine->registerFunction('csrfField', [$this, 'csrfField']);
     }
 
     /**

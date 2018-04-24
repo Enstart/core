@@ -67,11 +67,25 @@ class ServiceProvider implements ServiceProviderInterface
             );
             $view->loadExtension($c->make('Enstart\View\ViewExtension'));
 
+            // Load all configured extensions
             $extensions = $c->config->get('views.extensions', []);
 
             if (is_array($extensions) && $extensions) {
                 foreach ($extensions as $ext) {
                     $view->loadExtension($c->make($ext));
+                }
+            }
+
+            // Add all configured folders
+            $folders = $c->config->get('views.folders');
+
+            if (is_array($folders)) {
+                foreach ($folders as $name => $path) {
+                    if (!is_string($name)) {
+                        continue;
+                    }
+
+                    $view->addFolder($name, $path);
                 }
             }
 
